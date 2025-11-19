@@ -1,0 +1,6 @@
+# robots.txt for Video Watermark
+User-agent: *
+Allow: /
+
+# Update the URL below to your actual domain before publishing
+Sitemap: https://watermark-gen.web.app/sitemap.xml
