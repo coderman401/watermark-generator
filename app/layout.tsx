@@ -1,69 +1,26 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import "./fonts.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const title = "Watermark — Watermark Editor";
+const description = "Create a text or logo watermark and export it as a transparent PNG. Edit locally in your browser.";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+export const viewport: Viewport = { themeColor: "#171915" };
 
 export const metadata: Metadata = {
-  title: "Video Watermark — Add Watermarks to Videos Easily",
-  description: "Create and apply watermarks to videos quickly. Free tool to add text or image watermarks and export your watermarked videos.",
-  viewport: "width=device-width, initial-scale=1.0",
-  keywords: "video watermark, add watermark to video, watermark maker, watermark online, video editor",
-  robots: "index, follow",
-  openGraph: {
-    type: "website",
-    title: "Video Watermark — Add Watermarks to Videos Easily",
-    description: "Create and apply watermarks to videos quickly. Free tool to add text or image watermarks and export your watermarked videos.",
-    url: "https://watermark-gen.web.app/",
-    images: "https://watermark-gen.web.app/og-image.png",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Video Watermark — Add Watermarks to Videos Easily",
-    description: "Create and apply watermarks to videos quickly. Free tool to add text or image watermarks and export your watermarked videos.",
-    images: "https://watermark-gen.web.app/og-image.png",
-  },
-  alternates: {
-    canonical: "https://watermark-gen.web.app/",
-  }
+  title,
+  description,
+  metadataBase: new URL("https://watermark-gen.web.app/"),
+  alternates: { canonical: "/" },
+  other: { "page-type": "software", "site-kind": "software" },
+  openGraph: { type: "website", title, description, url: "/", images: "/og-image.png" },
+  twitter: { card: "summary_large_image", title, description, images: "/og-image.png" },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <head>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "url": "https://watermark-gen.web.app/",
-            "name": "Video Watermark",
-            "description": "Create and apply watermarks to videos quickly.",
-            "publisher": {
-              "@type": "Organization",
-              "name": "Video Watermark"
-            }
-          })}
-        </script>
-      </head>
-
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    <html lang="en" data-type="software">
+      <body>{children}</body>
     </html>
   );
 }
