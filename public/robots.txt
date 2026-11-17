@@ -1,4 +1,4 @@
-# robots.txt for Video Watermark
+# robots.txt for Watermark
 User-agent: *
 Allow: /
 
